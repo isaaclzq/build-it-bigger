@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.example.android.jokesandroid.JokeDisplayActivity;
-import com.example.Jokes;
+import com.example.android.jokesandroid.RetrieveAsycnTask;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RetrieveAsycnTask.onPostFinishListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Intent intent = new Intent(this, JokeDisplayActivity.class);
-        intent.putExtra("joke", Jokes.getJoke());
-        startActivity(intent);
+        new RetrieveAsycnTask().execute(this);
     }
 
 
+    @Override
+    public String onPostFinish(String joke) {
+        Intent intent = new Intent(this, JokeDisplayActivity.class);
+        intent.putExtra("joke", joke);
+        startActivity(intent);
+        return null;
+    }
 }

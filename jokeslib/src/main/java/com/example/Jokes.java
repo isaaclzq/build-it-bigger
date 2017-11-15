@@ -10,8 +10,6 @@ public class Jokes {
 
         int index = (int) (Math.random() * 10 * JOKES.length) % JOKES.length;
 
-        System.out.println(String.format("index is %d", index));
-
         return JOKES[index];
     }
 }

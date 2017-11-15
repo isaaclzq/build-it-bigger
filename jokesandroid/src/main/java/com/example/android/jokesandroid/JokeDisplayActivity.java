@@ -32,5 +32,4 @@ public class JokeDisplayActivity extends AppCompatActivity {
         jokeView.setText(joke);
 
     }
-
 }
