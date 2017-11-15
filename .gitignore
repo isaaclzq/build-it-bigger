@@ -7,3 +7,6 @@
 /build
 /captures
 .gitignore
+.backend/build
+.app/build
+.joke*/build
